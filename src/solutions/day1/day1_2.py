@@ -1,6 +1,6 @@
 import heapq
 
-with open("data/day1.txt") as file:
+with open("../../data/day1.txt") as file:
 
     curr = 0
     heap = []
