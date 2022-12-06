@@ -50,11 +50,11 @@ class Solution:
             if store_size == num_of_markers:
                 return i + 1
 
-    def solve(self):
+    def solve(self) -> None:
         self.sol1 = self.helper(4)
         self.sol2 = self.helper(14)
 
-    def get_solution(self):
+    def get_solution(self) -> tuple:
         return (self.sol1, self.sol2)
 
 
