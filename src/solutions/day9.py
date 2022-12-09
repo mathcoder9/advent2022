@@ -1,3 +1,7 @@
+from __future__ import annotations
+from typing import List
+
+
 class Solution:
 
     direction_map = {"L": (-1, 0), "R": (1, 0), "U": (0, 1), "D": (0, -1)}
@@ -30,7 +34,7 @@ class Solution:
 
         return len(visited)
 
-    def update(self, pointA, pointB) -> list(int):
+    def update(self, pointA, pointB) -> List[int]:
         if self.get_L1_distance(pointA, pointB) == 2:
             if pointA[0] == pointB[0]:
                 pointB[1] += 1 if pointA[1] > pointB[1] else -1
