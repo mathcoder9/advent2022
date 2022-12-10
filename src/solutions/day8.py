@@ -8,7 +8,7 @@ class Solution:
         self.solve2()
 
     def init_data(self) -> None:
-        with open("../../data/day8.txt") as file:
+        with open("../data/day8.txt") as file:
             self.data = [list(map(int, line))
                          for line in file.read().split("\n")]
 

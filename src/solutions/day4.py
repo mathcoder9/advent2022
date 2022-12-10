@@ -10,7 +10,7 @@ class Solution:
         self.solve()
 
     def init_data(self) -> None:
-        with open("../../data/day4.txt") as file:
+        with open("../data/day4.txt") as file:
             self.data = file.read().split("\n")
 
     def convert_data(self, intervalData) -> List[List[int]]:

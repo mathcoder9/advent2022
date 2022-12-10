@@ -12,7 +12,7 @@ class Solution:
         self.solve2()
 
     def init_data(self) -> None:
-        with open("../../data/day5.txt") as file:
+        with open("../data/day5.txt") as file:
             data = file.read().split("\n")
 
         size = len(data)

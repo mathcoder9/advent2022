@@ -45,7 +45,7 @@ class Solution:
         self.solve()
 
     def init_data(self) -> None:
-        with open("../../data/day7.txt") as file:
+        with open("../data/day7.txt") as file:
             self.data = file.read().split("\n")
 
     def init_tree(self) -> None:
