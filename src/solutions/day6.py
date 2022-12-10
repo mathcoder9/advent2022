@@ -7,7 +7,7 @@ class Solution:
         self.solve()
 
     def init_data(self) -> None:
-        with open("../../data/day6.txt") as file:
+        with open("../data/day6.txt") as file:
             self.data = file.read()
 
     def addToStore(self, data, store, store_size) -> list:

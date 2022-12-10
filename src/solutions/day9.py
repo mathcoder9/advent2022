@@ -13,7 +13,7 @@ class Solution:
         self.solve()
 
     def init_data(self) -> None:
-        with open("../../data/day9.txt") as file:
+        with open("../data/day9.txt") as file:
             self.data = [line.split(" ")
                          for line in file.read().split("\n")]
 
