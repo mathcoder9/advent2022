@@ -1,3 +1,5 @@
+# 66ms solution
+
 class Solution:
 
     def __init__(self) -> None:
@@ -27,31 +29,41 @@ class Solution:
                     for j in range(min(pointA[0], pointB[0]), max(pointA[0], pointB[0]) + 1):
                         self.rocks.add((j, pointA[1]))
 
+# use stack to remember where we came from (since this is always valid) and attempt evolution from there
+
     def solve(self) -> None:
         count_sol1 = True
+        stack = [(500, 0)]
         while True:
-            x = 500
-            y = 0
-            if (x, y) in self.rocks:
+
+            if not stack:
                 break
+            x, y = stack.pop()
+
             if count_sol1:
                 self.sol1 += 1
             self.sol2 += 1
+
+            # evolve sand
             while True:
                 if y < self.lowest_level + 1:
                     if (x, y+1) not in self.rocks:
+                        stack.append((x, y))
                         y += 1
                         continue
                     elif (x-1, y+1) not in self.rocks:
+                        stack.append((x, y))
                         x -= 1
                         y += 1
                         continue
                     elif (x+1, y+1) not in self.rocks:
+                        stack.append((x, y))
                         x += 1
                         y += 1
                         continue
                 self.rocks.add((x, y))
                 break
+
             if y > self.lowest_level:
                 count_sol1 = False
 
