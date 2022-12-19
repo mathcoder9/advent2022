@@ -1,7 +1,6 @@
 from collections import deque
-from functools import lru_cache
 import time
-import sys
+from typing import Set, Tuple, Generator
 
 
 class Solution:
@@ -27,13 +26,13 @@ class Solution:
         self.constraints.append((min(cube[2] for cube in self.droplet)-1, max(
             cube[2] for cube in self.droplet) + 1))
 
-    def get_neighbours(self, cube):
+    def get_neighbours(self, cube: Set[Tuple[int]]) -> Generator[Tuple[int]]:
         for dx, dy, dz in [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)]:
             yield (cube[0] + dx, cube[1] + dy, cube[2] + dz)
 
-    def make_cast(self):
+    def make_cast(self) -> Set[Tuple[int]]:
 
-        def in_box(cube):
+        def in_box(cube: Set[Tuple[int]]) -> bool:
             return self.constraints[0][0] <= cube[0] <= self.constraints[0][1] and self.constraints[1][0] <= cube[1] <= self.constraints[1][1] and self.constraints[2][0] <= cube[2] <= self.constraints[2][1]
 
         q = deque(
@@ -54,19 +53,19 @@ class Solution:
 
         return cast
 
-    def make_filled_droplet(self):
+    def make_filled_droplet(self) -> Set[Tuple[int]]:
         cast = self.make_cast()
         return set([(i, j, k) for i in range(self.constraints[0][0], self.constraints[0][1] + 1) for j in range(
             self.constraints[1][0], self.constraints[1][1] + 1) for k in range(self.constraints[2][0], self.constraints[2][1] + 1)]) - cast
 
-    def helper(self, droplet):
+    def helper(self, droplet: Set[Tuple[int]]) -> int:
         area = 0
         for cube in droplet:
             for neighbour in self.get_neighbours(cube):
                 area += neighbour not in droplet
         return area
 
-    def solve(self):
+    def solve(self) -> None:
         self.sol1 = self.helper(self.droplet)
         self.sol2 = self.helper(self.make_filled_droplet())
 
