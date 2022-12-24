@@ -95,18 +95,9 @@ class Solution:
 
             # if we know monkey_two value
             if monkey_two in self.number_map:
-                if operator == "+":
-                    res = self.reverse_operators[operator](
-                        res, self.number_map[monkey_two])
-                elif operator == "-":
-                    res = self.reverse_operators[operator](
-                        self.number_map[monkey_two], res)
-                elif operator == "*":
-                    res = self.reverse_operators[operator](
-                        res, self.number_map[monkey_two])
-                elif operator == "/":
-                    res = self.reverse_operators[operator](
-                        self.number_map[monkey_two], res)
+                res = self.reverse_operators[operator](
+                    res, self.number_map[monkey_two])
+
                 monkey = monkey_one
                 continue
 
