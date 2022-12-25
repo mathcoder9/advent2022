@@ -63,7 +63,7 @@ class Solution:
             self.row_range.append([start_row, end_row])
 
     #todo: clean
-    def move(self, position, steps, direction):
+    def move(self, position: Tuple[int], steps: int, direction: int) -> Tuple[int]:
         if steps == 0:
             return position
 
@@ -111,7 +111,7 @@ class Solution:
 
             return ((row - self.col_range[column][0] - min(steps, dist_to_wall - 1)) % col_length + self.col_range[column][0], column)
 
-    def helper(self):
+    def helper(self) -> int:
 
         position = (0, self.row_range[0][0])
         direction = 0
@@ -141,7 +141,7 @@ class Solution:
     #                                   3
     #                                 5 4
     #                                 6
-    def get_cube_face(self, position):
+    def get_cube_face(self, position: Tuple[int]) -> int:
         row, col = position
         row_idx = row // 50
         col_idx = col // 50
@@ -154,7 +154,7 @@ class Solution:
         else:
             return 6
 
-    def next_position(self, position, direction):
+    def next_position(self, position: Tuple[int], direction: int) -> Tuple[Tuple[int], int]:
         row, col = position
         row_range = self.row_range[row]
         col_range = self.col_range[col]
@@ -172,7 +172,7 @@ class Solution:
             position), direction]
         return (lambda_fun(row, col), new_direction)
 
-    def move_2(self, position, steps, direction):
+    def move_2(self, position: Tuple[int], steps: int, direction: int) -> Tuple[Tuple[int], int]:
 
         for _ in range(steps):
             next_position, next_direction = self.next_position(
@@ -183,7 +183,7 @@ class Solution:
 
         return (position, direction)
 
-    def helper_2(self):
+    def helper_2(self) -> int:
         position = (0, self.row_range[0][0])
         direction = 0
 
